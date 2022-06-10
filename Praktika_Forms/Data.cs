@@ -8,7 +8,6 @@ namespace Praktika_Forms
         public static string filename = Directory.GetCurrentDirectory() + "\\data.txt";
         public static List<string[]> list = new List<string[]>();
         public static List<string[]> grants = new List<string[]>();
-        public static bool ToFind = false;
         public static bool Edit = false;
         public static int RemoveItem;
         public static int male;
