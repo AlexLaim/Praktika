@@ -113,14 +113,21 @@ namespace Praktika_Forms
         private void button3_Click(object sender, EventArgs e)
         {
             Data.list.Clear();
-            using (StreamReader streamreader = new StreamReader(File.Open(Data.filename, FileMode.OpenOrCreate)))
+            if (File.Exists(Data.filename))
             {
-                while (streamreader.Peek() > -1)
+                using (StreamReader streamreader = new StreamReader(File.Open(Data.filename, FileMode.Open)))
                 {
-                    Data.list.Add(streamreader.ReadLine().Split());
+                    while (streamreader.Peek() > -1)
+                    {
+                        Data.list.Add(streamreader.ReadLine().Split());
+                    }
                 }
+                RefreshList(Data.list);
+            }else
+            {
+                MessageBox.Show("Данного файла не существует, пожалуйста сохраните данные в файл прежде чем его открывать");
             }
-            RefreshList(Data.list);
+        
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
